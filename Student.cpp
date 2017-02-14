@@ -37,34 +37,15 @@ Grade Student::getGrade()
 }
 
 std::string Student::getEmail()
-{
-	std::string email;
-	std::string first = getFirstName();
-	std::string last = getLastName();
+{		
+	std::string first5CharsOfLastName = getFirstName().substr(0, 5);
+	
+	//if last name isn't 5 characters we want to grab more characters from first name
+	int additionalCharacters = 5 - first5CharsOfLastName.size();
 
-	int x{ 0 };
-	while (x < 5)
-	{
-		if (last[x] == '\0')
-			break;
+	std::string firstCharOfFirstName = getLastName().substr(0, 1 + additionalCharacters);
 
-		email.push_back(last[x]);
-		x++;
-	}
-
-	int i = 0;
-	while (x < 6)
-	{
-		if (first[i] == '\0')
-			break;
-
-		email.push_back(first[i]);
-		x++;
-		i++;
-	}
-	email += emailDomain;
-
-	return email;
+	return first5CharsOfLastName + firstCharOfFirstName + emailDomain;
 }
 
 void Student::setFirstName(std::string first)
@@ -108,12 +89,12 @@ Result Student::sendEmail(std::string text)
 Result Student::isUserValid()
 {
 	Result result;
-	if (getFirstName().size() == 0)
+	if (getFirstName().empty())
 	{
 		result.success = false;
 		result.message = "No First Name";
 	}
-	if (getLastName().size() == 0)
+	if (getLastName().empty())
 	{
 		result.success = false;
 		result.message = "No Last Name";
