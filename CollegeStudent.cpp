@@ -1,16 +1,12 @@
 #include "CollegeStudent.h"
 
-
-
 CollegeStudent::CollegeStudent()
 {
 }
 
 CollegeStudent::CollegeStudent(std::string first, std::string last)
+	:Student(first, last)
 {
-	//can put checks here to detect for invalid names and throw an exception if error is found
-	setFirstName(first);
-	setLastName(last);
 }
 
 CollegeStudent::~CollegeStudent()
@@ -21,11 +17,7 @@ CollegeStudent::~CollegeStudent()
 std::string CollegeStudent::getEmail()
 {
 	std::string email;
+	std::string first2CharsOfFirstName = getFirstName().substr(0, 2);
 
-	email += getLastName();
-	email.push_back(getFirstName()[0]);
-	email.push_back(getFirstName()[1]);
-	email += emailDomain;
-	
-	return email;
+	return getLastName() + first2CharsOfFirstName + emailDomain;
 }
