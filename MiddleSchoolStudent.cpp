@@ -7,10 +7,8 @@ MiddleSchoolStudent::MiddleSchoolStudent()
 }
 
 MiddleSchoolStudent::MiddleSchoolStudent(std::string first, std::string last)
+	:Student(first, last)
 {
-	//can put checks here to detect for invalid names and throw an exception if error is found
-	setFirstName(first);
-	setLastName(last);
 }
 
 MiddleSchoolStudent::~MiddleSchoolStudent()
