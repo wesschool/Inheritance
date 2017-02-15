@@ -6,6 +6,7 @@ int main()
 {
 	CollegeStudent cStudent("jeff", "adams");
 	cStudent.setGrade(Sophomore);
+	cStudent.setPhoneNumber(9999999999);
 	cStudent.sendEmail("Remember to get all your late work in!");
 
 	std::cout << "\n\n";
