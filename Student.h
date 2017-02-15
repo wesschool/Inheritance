@@ -44,7 +44,7 @@ public:
 
 protected:
 	//checks to make sure student valid and returns the result of the check
-	Result isUserValid();
+	virtual Result isUserValid();
 
 private:
 	std::string emailDomain = "@example.com";
